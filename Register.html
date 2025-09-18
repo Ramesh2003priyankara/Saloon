@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="css/Register.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left side (Logo + Brand) -->
+    <div class="left-box">
+      <div class="logo">
+        <i class="fa fa-user-tie"></i>
+        <h1>SENULYA</h1>
+        <p>SALOON</p>
+      </div>
+    </div>
+
+    <!-- Right side (Register form) -->
+    <div class="right-box">
+      <h2>Register</h2>
+      <form method="POST" action="Register.php">
+        
+        <div class="input-box">
+          <i class="fa fa-user"></i>
+          <input type="text" name="username" placeholder="User Name" required>
+        </div>
+
+        <div class="input-box">
+          <i class="fa fa-phone"></i>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+        </div>
+
+        <div class="input-box">
+          <i class="fa fa-envelope"></i>
+          <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="input-box">
+          <input type="password" name="password" placeholder="Password" required>
+          <i class="fa fa-eye toggle-password"></i>
+        </div>
+
+        <div class="input-box">
+          <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+          <i class="fa fa-eye toggle-password"></i>
+        </div>
+
+        <button type="submit" class="btn create">Create Account</button>
+        <p class="login-link">Already have an account? <a href="Login.html">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Toggle password visibility
+    const togglePassword = document.querySelectorAll('.toggle-password');
+    togglePassword.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const input = icon.previousElementSibling;
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          input.type = 'password';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

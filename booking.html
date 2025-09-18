@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Appointment Booking</title>
+  <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Book Your Appointment</h2>
+    <form id="bookingForm">
+      
+      <!-- Booking ID (auto generated on page load) -->
+      <label for="bookingId">Appointment ID</label>
+      <input type="text" id="bookingId" name="bookingId" placeholder="Generating..." readonly>
+
+      <!-- Service Type -->
+      <label for="service">Service Type</label>
+      <select id="service" name="service" required>
+        <option value="">-- Select a Service --</option>
+        <option value="Haircut">Haircut</option>
+        <option value="Coloring">Hair Coloring</option>
+        <option value="Facial">Facial</option>
+        <option value="Shaving">Shaving</option>
+        <option value="Beard Trim">Beard Trim</option>
+        <option value="Pedicure">Pedicure</option>
+      </select>
+
+      <!-- Date -->
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <!-- Time Slot -->
+      <label for="time">Time Slot</label>
+      <select id="time" name="time" required>
+        <option value="">-- Select Time --</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="11:30 AM">11:30 AM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+      </select>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Confirm Booking</button>
+    </form>
+  </div>
+
+  <script>
+    // Prevent past dates
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").setAttribute("min", today);
+  
+    // --- Function to load new Booking ID ---
+    function loadBookingId() {
+      fetch("generate_id.php")
+        .then(response => response.json())
+        .then(data => {
+          console.log("Generated ID Response:", data);
+          if (data && data.appointment_id) {
+            document.getElementById("bookingId").value = data.appointment_id;
+          } else {
+            document.getElementById("bookingId").value = "Error generating ID";
+          }
+        })
+        .catch(error => {
+          console.error("Error generating ID:", error);
+          document.getElementById("bookingId").value = "Error!";
+        });
+    }
+  
+    // Load Booking ID on page load
+    window.addEventListener("DOMContentLoaded", loadBookingId);
+  
+    // --- Form submission ---
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      const formData = new FormData(this);
+  
+      fetch('booking.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Booking Save Response:", data);
+        if (data && data.appointment_id) {
+          alert('✅ Booking Confirmed! Your Appointment ID is: ' + data.appointment_id);
+          this.reset(); // clear form
+          loadBookingId(); // 👈 Immediately load next booking ID
+        } else if (data && data.error) {
+          alert('❌ Error: ' + data.error);
+        } else {
+          alert('❌ Unexpected response from server.');
+        }
+      })
+      .catch(error => {
+        alert('Error: ' + error);
+      });
+    });
+  </script>

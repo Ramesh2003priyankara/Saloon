@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senulya Saloon | Login</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/login.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Identity Services SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Logo -->
+    <div class="brand-box">
+      <div class="logo">
+        <i class="fa-solid fa-user-tie"></i>
+        <span class="brand">SENULYA</span> <span class="sub">SALOON</span>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-box">
+      <h2>Login</h2>
+      <form action="login.php" method="POST">
+        <div class="input-box">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Type your email" required>
+        </div>
+
+        <div class="input-box">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Type your password" required>
+          <i class="fa fa-eye toggle-password"></i>
+        </div>
+
+        <button type="submit" name="signIn" class="btn">Sign in</button>
+      </form>
+
+      <div class="or-divider">— or —</div>
+      
+      <!-- Google Sign-in -->
+      <div id="g_id_onload"
+          data-client_id="423805084263-fs9b19usaeh2skfkaap7scqfd6nb2jg0.apps.googleusercontent.com"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false">
+      </div>
+
+      <div class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-size="large"
+          data-logo_alignment="center">
+      </div>
+
+      <p class="signup-text">Don’t have an account yet? <a href="Register.html">Sign up</a></p>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

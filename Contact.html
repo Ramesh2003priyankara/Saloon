@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Contact US</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="css/Contact-style.css">
+    </head>
+    <body>
+        <section class="contact">
+            <div class="content">
+                <h2><i class='bx bx-support'></i> <br> Contact Us</h2>
+                <p class="contact-desc">
+                   At Senulya Salon, we are here to help you look and feel your best.<br> For appointments or inquiries, simply call, message, or visit us in Dikwella <br>
+                    we are happy to assist you!
+                </p>
+            </div>
+            <div class="container">
+                <div class="ContactInfo">
+                    <div class="box">
+                        <div class="icon"><i class='bx bx-map'></i></div>
+                        <div class="text">
+                            <h3>Address</h3>
+                            <p>H.R Cinema hall Dikwella</p>
+                        </div>
+                    </div>
+                    
+                    <div class="box">
+                        <div class="icon"><i class='bx bxs-phone-call'></i></div>
+                        <div class="text">
+                            <h3>Phone</h3>
+                            <p>0704654310</p><br>
+                            <p>0703094542</p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="icon"><i class='bx bx-envelope'></i></div>
+                        <div class="text">
+                            <h3>Email</h3>
+                            <p>Saloonsenulya@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="contactForm">
+                    <!-- FORM UPDATED -->
+                    <form action="contact_process.php" method="POST">
+                        <h2>Send Message</h2>
+                        <div class="inputBox">
+                            <input type="text" name="fullname" required="required">
+                            <span>Full Name</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="email" name="email" required="required">
+                            <span>Email</span>
+                        </div>
+                        <div class="inputBox">
+                            <textarea name="message" required="required"></textarea>
+                            <span>Type your message...</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" value="Send">
+                        </div>
+                    </form>
+                </div>
+
+                 <section class="support-faq">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.01368835337666!2d80.69428985952169!3d5.9645419219608735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae137002090a177%3A0x9ddb935a0c9c0e25!2sDikwella%20senulya%20salon!5e0!3m2!1sen!2slk!4v1758197924921!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </section>
+                
+            </div>
+        </section>
+    </body>
+</html>
